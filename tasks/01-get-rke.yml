@@ -1,0 +1,9 @@
+---
+- name: Create RKE directory
+  file: path=/opt/rke/ state=directory mode="a+rw"
+
+- name: Get RKE.
+  get_url:
+    url: https://github.com/rancher/rke/releases/download/{{ rke_version }}/rke_linux-amd64
+    dest: "/opt/rke/"
+    mode: 0755

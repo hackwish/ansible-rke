@@ -1,0 +1,12 @@
+---
+# defaults file for rke
+
+rke_version: 'v0.1.16'
+
+#Cluster config
+kubecluster:
+- "- address: ": "{{ rke_cluster_address | default('localhost') }}"
+- "internal_address: ": "{{ rke_cluster_internal_address | default('localhost') }}"
+- "user: ": "{{ ansible_user }}"
+- "role: ": "[controlplane,worker,etcd]"
+- "port: ": "22"

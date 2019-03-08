@@ -1,0 +1,12 @@
+nodes:
+{% for item in kubecluster %}
+  {% for key, value in item.iteritems() %}
+    {{ key }}{{ value }}
+  {% endfor %}
+{% endfor %}
+
+services:
+  etcd:
+    snapshot: true
+    creation: 6h
+    retention: 24h

@@ -1,0 +1,13 @@
+---
+
+- name: Create RKE Cluster directory
+  file: path=/opt/rke-cluster/ state=directory mode="a+rw"
+
+- name: RKE cluster
+  template:
+      src=kube_config_cluster.yml.j2
+      dest=/opt/rke-cluster/default-rancher-cluster.yml
+      mode=0644
+      owner={{ ansible_user }}
+      group={{ ansible_user }}
+

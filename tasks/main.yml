@@ -1,0 +1,11 @@
+---
+# tasks file for rke
+
+- include: 01-get-rke.yml
+  tags: rke-get
+
+- include: 02-configure-rke.yml
+  tags: rke-configure
+
+- include: 03-configure-cluster-rke.yml
+  tags: rke-configure-cluster

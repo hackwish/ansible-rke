@@ -1,0 +1,24 @@
+---
+
+- name: Verify RKE exists
+  stat: path=/opt/rke/rke_linux-amd64
+  register: rke_stat
+
+- name: Configure RKE on system bin.
+  file:
+    src: "/opt/rke/rke_linux-amd64"
+    dest: "/usr/bin/rke"
+    state: link
+  when: rke_stat.stat.exists
+
+- name: Configure RKE on system sbin.
+  file:
+    src: "/opt/rke/rke_linux-amd64"
+    dest: "/usr/sbin/rke"
+    state: link
+  when: rke_stat.stat.exists
+
+- command: rke --version
+  register: result
+  failed_when: false
+  changed_when: false
